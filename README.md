@@ -8,9 +8,9 @@ Usage
 docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock test
 ```
 
-If you want to add your git keys, add `-v "$HOME/.ssh/:/root/.ssh/"`
-If you want to crossbuild architectures, add `-v "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"` and so on...
-If you want to push compiled images, you may need to add `-v $HOME/.docker/config.json:/root/.docker/config.json`
+- If you want to add your git keys, add `-v "$HOME/.ssh/:/root/.ssh/"`
+- If you want to crossbuild architectures, add `-v "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"` and so on...
+- If you want to push compiled images, you may need to add `-v $HOME/.docker/config.json:/root/.docker/config.json`
 
 Appendixes
 ---
