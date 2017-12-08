@@ -1,7 +1,6 @@
 FROM docker
 ENV PORT=80
-RUN apk add git openssh make python3 --update --no-cache
-RUN apk add --no-cache ca-certificates
+RUN apk add git openssh make python3 ca-certificates gnupg --update --no-cache
 
 ENV GOLANG_VERSION 1.9.2
 ENV GOPATH /go
