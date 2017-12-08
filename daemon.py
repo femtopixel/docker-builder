@@ -1,14 +1,25 @@
 #!/usr/bin/env python3
 
-import socket, json, subprocess
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json, subprocess, time
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(('', 80))
-server.listen()
-while True:
-    content = b""
-    client = server.accept()
-    while not content.endswith(u"\r\n"):
-        content = content + client.recv(1024)
-    client.close()
-    subprocess.run(["VERSION=" + json.loads(content)['version'], "/root/update.sh"], stdout=subprocess.PIPE)
+
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        print("incomming http: ", self.path)
+        content_length = int(self.headers['Content-Length'])
+        content = self.rfile.read(content_length)
+        self.send_response(200)
+        subprocess.run(["/root/update.sh", json.loads(content)['version']], stdout=subprocess.PIPE)
+
+httpd = HTTPServer(('', 80), RequestHandler)
+
+print(time.asctime(), "Server Starts")
+
+try:
+    httpd.serve_forever()
+except KeyboardInterrupt:
+    pass
+
+httpd.server_close()
+print(time.asctime(), "Server Stops")
