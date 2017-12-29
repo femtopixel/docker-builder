@@ -1,6 +1,8 @@
 Docker Builder - Docker image
 =============================
 
+When receiving a message on http protocole, daemon is executed to interprete JSON body message and send to `/root/update.sh` script
+
 Usage
 -----
 
