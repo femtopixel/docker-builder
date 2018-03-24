@@ -6,7 +6,7 @@ import json, subprocess, time
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        print("incomming http: ", self.path)
+        print("incoming http: ", self.path)
         content_length = int(self.headers['Content-Length'])
         content = self.rfile.read(content_length)
         self.send_response(200)
