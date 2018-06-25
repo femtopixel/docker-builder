@@ -5,13 +5,7 @@ archs ?= s390x amd64 i386 arm64v8 arm32v6
 
 .PHONY: all build publish latest
 all: build publish latest
-qemu-arm-static:
-	cp /usr/bin/qemu-arm-static .
-qemu-aarch64-static:
-	cp /usr/bin/qemu-aarch64-static .
-qemu-s390x-static:
-	cp /usr/bin/qemu-s390x-static .
-build: qemu-arm-static qemu-aarch64-static qemu-s390x-static
+build:
 	$(foreach arch,$(archs), \
 		cat Dockerfile | sed "s/FROM docker/FROM ${arch}\/docker/g" > .Dockerfile; \
 		docker build -t femtopixel/builder:${VERSION}-$(arch) -f .Dockerfile ${CACHE} .;\
