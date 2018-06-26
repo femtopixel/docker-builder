@@ -1,2 +1,3 @@
 /.Dockerfile
 /manifest.yaml
+/qemu-*

@@ -22,8 +22,3 @@ manifests:
     platform:
       architecture: amd64
       os: linux
-  -
-    image: femtopixel/builder:$VERSION-s390x
-    platform:
-      architecture: s390x
-      os: linux
