@@ -10,7 +10,11 @@ class RequestHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         content = self.rfile.read(content_length)
         self.send_response(200)
-        subprocess.run(["/root/update.sh", json.loads(content)['version']], stdout=subprocess.PIPE)
+        json_content = json.loads(content)
+        subprocess.run(
+            ["/root/update.sh", json_content['package_name'], json_content['version']],
+            stdout=subprocess.PIPE
+        )
 
 httpd = HTTPServer(('', 80), RequestHandler)
 
