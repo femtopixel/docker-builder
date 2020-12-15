@@ -3,6 +3,8 @@
 Docker Builder - Docker image
 =============================
 
+DISCLAIMER: As-of 2021, this product does not have a free support team anymore. If you want this product to be maintained, please support on Patreon.
+
 The purpose of this project is to build a Docker image on demand but can be used to launch a process on demand that can interact with docker.
 
 When receiving a message on http protocole, daemon is executed to interprete JSON body message and send to `/root/update.sh` script
