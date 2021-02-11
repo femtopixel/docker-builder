@@ -15,7 +15,7 @@ build: qemu-arm-static qemu-aarch64-static
 		docker build -t femtopixel/builder:${VERSION}-$(arch) -f .Dockerfile ${CACHE} .;\
 	)
 publish:
-	docker push femtopixel/builder
+	docker push femtopixel/builder -a
 	cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
 	cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
 	mv manifest2.yaml manifest.yaml
