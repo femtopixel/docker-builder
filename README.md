@@ -1,21 +1,9 @@
-![logo](logo.png)
-
-Docker Builder - Docker image
-=============================
-
-DISCLAIMER: As-of 2021, this product does not have a free support team anymore. If you want this product to be maintained, please support on Patreon.
-
-The purpose of this project is to build a Docker image on demand but can be used to launch a process on demand that can interact with docker.
-
-When receiving a message on http protocole, daemon is executed to interprete JSON body message and send to `/root/update.sh` script
-
-Usage
------
-
-```
-docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock test
-```
-
+> [!CAUTION]
+> As-of 2021, this product does not have a free support team anymore. If you want this product to be maintained, please support my work.
+ 
+> [!NOTE]
+> (This product is available under a free and permissive license, but needs financial support to sustain its continued improvements. In addition to maintenance and stability there are many  desirable features yet to be added.)
+ 
 - If you want to add your git keys, add `-v "$HOME/.ssh/:/root/.ssh/"`
 - If you want to crossbuild architectures, add `-v "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"` and so on...
 - If you want to push compiled images, you may need to add `-v $HOME/.docker/config.json:/root/.docker/config.json`
